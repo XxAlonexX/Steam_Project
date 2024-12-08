@@ -1,59 +1,41 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:steam/dio/dio.dart';
-import 'package:steam/providers/featured_provider.dart';
-import 'package:steam/providers/search_provider.dart';
-import 'package:steam/providers/sidemenu_provider.dart';
-
-import 'package:steam/router/router.dart';
-import 'package:steam/services/navigation_service.dart';
-import 'package:steam/ui/layouts/home_layout.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'screens/home_screen.dart';
+import 'providers/app_state.dart';
 
 void main() {
-  Flurorouter.configureRoutes();
-  Api.configureDio();
-  runApp(const AppState());
-}
-
-class AppState extends StatelessWidget {
-  const AppState({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
+  runApp(
+    MultiProvider(
       providers: [
-        ChangeNotifierProvider(lazy: false, create: (_) => SideMenuProvider()),
-        ChangeNotifierProvider(lazy: false, create: (_) => SearchProvider()),
-        ChangeNotifierProvider(lazy: false, create: (_) => FeatureProvider()),
+        ChangeNotifierProvider(create: (_) => AppState()),
       ],
-      child: const MainApp(),
-    );
-  }
+      child: const SteamStoreApp(),
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class SteamStoreApp extends StatelessWidget {
+  const SteamStoreApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Steam Store Clone',
       debugShowCheckedModeBanner: false,
-      scrollBehavior: const MaterialScrollBehavior().copyWith(
-        dragDevices: {
-          PointerDeviceKind.mouse,
-          PointerDeviceKind.touch,
-          PointerDeviceKind.stylus,
-          PointerDeviceKind.unknown
-        },
+      theme: ThemeData(
+        primaryColor: const Color(0xFF171a21),
+        scaffoldBackgroundColor: const Color(0xFF1b2838),
+        colorScheme: ColorScheme.dark(
+          primary: const Color(0xFF171a21),
+          secondary: Colors.blue[700]!,
+          background: const Color(0xFF1b2838),
+        ),
+        textTheme: GoogleFonts.notoSansTextTheme(
+          ThemeData.dark().textTheme,
+        ),
       ),
-      title: 'Welcome to Steam',
-      initialRoute: '/',
-      onGenerateRoute: Flurorouter.router.generator,
-      navigatorKey: NavigationService.navigatorKey,
-      builder: (_, child) {
-        return HomeLayout(child: child!);
-      },
+      home: const HomeScreen(),
     );
   }
 }

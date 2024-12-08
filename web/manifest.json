@@ -1,6 +1,6 @@
 {
-    "name": "steam",
-    "short_name": "steam",
+    "name": "steam_project",
+    "short_name": "steam_project",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
