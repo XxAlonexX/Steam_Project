@@ -28,7 +28,7 @@ It's like Steam, but with more Flutter and less Gabe Newell. We've got:
 
 ## 🚀 Getting Started
 
-1. Clone this repo (if you dare)
+1. `Git Clone git@github.com:XxAlonexX/Steam_Project.git `
 2. Run `flutter pub get` (pray it works)
 3. Run `flutter run` (cross your fingers)
 4. Enjoy your very own not-Steam store!
@@ -49,14 +49,6 @@ Found a bug? Want to add a feature? Know how to center a div? We welcome all con
 3. Code it
 4. Push it
 5. Pull request it
-
-## ⚠️ Disclaimer
-
-This is a clone project made for educational purposes. Any resemblance to actual gaming platforms is purely "coincidental" *wink wink*
-
-## 📝 License
-
-MIT License (because we're cool like that)
 
 ## 🙋‍♂️ Author
 
